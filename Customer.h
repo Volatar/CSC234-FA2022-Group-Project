@@ -1,28 +1,30 @@
+#pragma once
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
-
-#include <string>
+#include "linkedList.h"
+#include "order.h"
+#include "orderList.h"
+#include <iomanip>
 #include <iostream>
-#include "Order.h"
-#include "OrderList.h"
+#include <string>
 
-using namespace std;
-
-class Customer
-{
+class Customer {
 	friend ostream& operator<<(ostream&, const Customer&);
+
 private:
 	string name;
 	string address;
 	string email;
 	OrderList orders;
+	void SearchOrderList(string title, bool& found, nodeType<Order>*& current) const;
+
 public:
 	Customer();
 	Customer(string, string, string, OrderList);
 	OrderList getOrders();
 	void AddOrder(Order);
-	void UpdateOrders(string, int);
-	void CancelOrder(string);
+	void updateOrders(string, int);
+	void cancelOrder(string);
 	string getCustomerName();
 	string getAddress();
 	string getEmail();
@@ -30,5 +32,4 @@ public:
 	bool operator==(const Customer&) const;
 	bool operator!=(const Customer&) const;
 };
-
 #endif
