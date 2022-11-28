@@ -64,8 +64,17 @@ string Customer::getEmail()
 { 
     return email;
 }
-double Customer::checkoutOrders() 
+void Customer::setCustomedetails(string c_name, string a_ddress, string e_mail)
 {
+    name = c_name;
+    email = e_mail;
+    address = a_ddress;
+
+}
+double Customer::checkoutOrders() 
+{ 
+    //logic pending,will update later today
+    return 111111111.11111
 
 }
 bool Customer::operator==(const Customer& otherCustomer) const
