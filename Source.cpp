@@ -87,15 +87,12 @@ void PlaceOrder(CustomerList& clist) {
         Customer c;
         string name;
         cout << "Enter Customer Name:";
-        cin >> name;
+        string dummy;
+        getline(cin, dummy);
+        getline(cin, name);
 
         // Get an existing customer
         if (clist.SearchCustomerByName(name)) {
-            //*******************************************
-            // Logic is incomplete for clist->getCustomerByName(name)
-            //
-            // Need to adjust following code after.
-            //*******************************************
             c = clist.getCustomerByName(name);
             cout << "Existing customer." << endl;
         }
@@ -105,9 +102,9 @@ void PlaceOrder(CustomerList& clist) {
             string email;
             cout << "New Customer" << endl;
             cout << "Enter Customer Address:";
-            cin >> address;
+            getline(cin, address);
             cout << "Enter Customer Email:";
-            cin >> email;
+            getline(cin, email);
             c = Customer(name, address, email, OrderList());
             //*
             clist.AddCustomer(c);
