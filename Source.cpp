@@ -223,15 +223,6 @@ void CancelOrder(CustomerList& clist) {
 
 // Print orders
 void PrintOrders(CustomerList& clist) {
-    //************************************************* 
-    // Customerlist and OrderList derive from linkedlistType
-    // and have the print() function. Have to verify 
-    // CustomerList.print() displays all customers and orders 
-    // correctly.
-    //
-    // Example comments added to 
-    //    operator<<(ostream&, const Customer&)
-    //************************************************* 
     cout << clist;
 
 }
