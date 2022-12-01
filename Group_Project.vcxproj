@@ -134,6 +134,8 @@
     <ClInclude Include="OrderList.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Customer.cpp" />
+    <ClCompile Include="CustomerList.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="OrderList.cpp" />
     <ClCompile Include="Source.cpp" />

@@ -19,8 +19,8 @@ ostream& operator<<(ostream& osObject, const CustomerList& customerList)
 void CustomerList::AddCustomer(Customer& newCustomer) 
 {
 	bool found = false;
-	nodeType<Order>* location;
 	SearchCustomerByName(newCustomer.getCustomerName());
+
 	if (found)
 		cout << "Customer already in CustomerList." << endl;
 	else
@@ -29,6 +29,7 @@ void CustomerList::AddCustomer(Customer& newCustomer)
 	}
 
 }
+
 bool CustomerList::SearchCustomerByName(string customerName) const
 {
 	nodeType<Customer>* current;
@@ -42,27 +43,47 @@ bool CustomerList::SearchCustomerByName(string customerName) const
 		else
 			current = current->link;
 	}
+
+	return found;
 }
-Customer getCustomerByName(string customerName)
+
+Customer CustomerList::getCustomerByName(string customerName) const
 {   
-	//need some work and rethink the logic 
-	Customer newCustomer;
-	nodeType<Customer>* location;
-	if (location->info.getCustomerName() == customerName)
+	nodeType<Customer>* current;
+	bool found = false;
+	current = first;
+
+	while (current != nullptr && !found)
 	{
-		return newCustomer;
+		if (current->info.getCustomerName() == customerName)
+			found = true;
+			
+		else
+			current = current->link;
 	}
+
+	return current->info;
 }
+
 void CustomerList::UpdateCustomer(Customer& newCustomer)
 {
 	bool found = false;
-	nodeType<Customer>* location;
+	nodeType<Customer>* current;
 
-	found=SearchCustomerByName(newCustomer.getCustomerName());
+	current = first;
+
+	while (current != nullptr && !found)
+	{
+		if (current->info.getCustomerName() == newCustomer.getCustomerName())
+			found = true;
+
+		else
+			current = current->link;
+	}
 
 	if (found)
 	{
-		location->info.setCustomedetails(newCustomer.getCustomerName(), newCustomer.getAddress(),newCustomer.getEmail());
+		current->info = newCustomer;
 	}
 	else
 		cout << "Customer not found." << endl;

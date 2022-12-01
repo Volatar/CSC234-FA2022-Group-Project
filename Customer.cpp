@@ -1,22 +1,27 @@
 #include <iostream>
 #include "Customer.h"
 #include "linkedList.h"
+
+using namespace std;
+
 ostream& operator<<(ostream& osObject, const Customer& customer)
 {
     osObject << setw(10) << left << "Name:";
-    osObject << setw(50) << left << customer.getCustomerName() << endl;
+    osObject << setw(50) << left << customer.name << endl;
     osObject << setw(10) << left << "Address:";
-    osObject << setw(50) << left << customer.getAddress() << endl;
+    osObject << setw(50) << left << customer.address << endl;
     osObject << setw(10) << left << "Email:";
-    osObject << setw(50) << left << customer.getEmail() << endl;
+    osObject << setw(50) << left << customer.email << endl;
     return osObject;
 }
+
 Customer::Customer() 
 {
     name = "";
     address = "";
     email = "";
 }
+
 Customer::Customer(string customerName, string addr, string customerEmail,OrderList customerOrders)
 {
     name = customerName;
@@ -24,6 +29,7 @@ Customer::Customer(string customerName, string addr, string customerEmail,OrderL
     email = customerEmail;
     orders = customerOrders;
 }
+
 OrderList Customer::getOrders()
 {
     return orders;
@@ -31,8 +37,9 @@ OrderList Customer::getOrders()
 
 void Customer::AddOrder(Order newOrder)
 {
-        orders.insertLast(newOrder); 
+    orders.insertLast(newOrder); 
 }
+
 void Customer::updateOrders(string title, int number) 
 {
     bool found = false;
@@ -47,6 +54,7 @@ void Customer::updateOrders(string title, int number)
     else
         cout << "Book not found." << endl;
 }
+
 void Customer::cancelOrder(string title) 
 {
     bool found = false;
@@ -62,46 +70,37 @@ void Customer::cancelOrder(string title)
         cout << "Book not found." << endl;
 
 }
+
 string Customer::getCustomerName()
 {
     return name; 
 }
+
 string Customer::getAddress() 
 { 
     return address; 
 }
+
 string Customer::getEmail() 
 { 
     return email;
 }
-void Customer::setCustomedetails(string c_name, string a_ddress, string e_mail)
-{
-    name = c_name;
-    email = e_mail;
-    address = a_ddress;
 
-}
 double Customer::checkoutOrders() 
 { 
-    //logic pending,will update later today
-    return 111111111.11111
-
+    return orders.CalculateSubtotal();
 }
+
 bool Customer::operator==(const Customer& otherCustomer) const
 {
     return (name == otherCustomer.name && address == otherCustomer.address && email == otherCustomer.email);
 }
+
 bool Customer::operator!=(const Customer& otherCustomer) const {
     return (name != otherCustomer.name || address != otherCustomer.address ||
         email != otherCustomer.email);
 }
-std::ostream& operator<<(std::ostream& osObject,
-    const Customer& customerObject) {
-    osObject << setw(20) << left << "Name: " << customerObject.name << "\n";
-    osObject << setw(20) << left << "Address: " << customerObject.address << "\n";
-    osObject << setw(20) << left << "Email: " << customerObject.email << "\n";
-    return osObject;
-}
+
 void Customer::SearchOrderList(string title, bool& found, nodeType<Order>*& current) const
 {
     found = false;

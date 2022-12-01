@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 #include "linkedList.h"
@@ -28,7 +27,6 @@ public:
 	string getCustomerName();
 	string getAddress();
 	string getEmail();
-	void setCustomedetails(string,string,string);
 	double checkoutOrders();
 	bool operator==(const Customer&) const;
 	bool operator!=(const Customer&) const;

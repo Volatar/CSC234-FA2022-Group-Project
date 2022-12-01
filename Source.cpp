@@ -4,11 +4,14 @@
 // How to fix this? Issue in main
 
 
-#include<istream>
-#include<ostream>
-#include<iostream>
-#include<fstream>
-#include"CustomerList.h"
+#include <istream>
+#include <ostream>
+#include <iostream>
+#include <fstream>
+#include "CustomerList.h"
+#include "Customer.h"
+#include "OrderList.h"
+#include "Order.h"
 
 using namespace std;
 
