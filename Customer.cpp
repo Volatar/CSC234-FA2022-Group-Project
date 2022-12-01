@@ -39,38 +39,17 @@ OrderList Customer::getOrders()
 
 void Customer::AddOrder(Order newOrder)
 {
-    orders.insertLast(newOrder); 
+    orders.AddOrder(newOrder); 
 }
 
 void Customer::updateOrders(string title, int number) 
 {
-    bool found = false;
-    nodeType<Order>* location;
-
-    SearchOrderList(title, found, location);
-
-    if (found)
-    {
-        location->info.setNumber(number);
-    }
-    else
-        cout << "Book not found." << endl;
+    orders.UpdateOrder(title, number);
 }
 
 void Customer::cancelOrder(string title) 
 {
-    bool found = false;
-    nodeType<Order>* location;
-
-    SearchOrderList(title, found, location);
-
-    if (found)
-    {
-        orders.deleteNode(location->info);
-    }
-    else
-        cout << "Book not found." << endl;
-
+    orders.CancelOrder(title);
 }
 
 string Customer::getCustomerName()
