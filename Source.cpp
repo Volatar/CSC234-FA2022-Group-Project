@@ -2,21 +2,8 @@
 // Comments are scattered throughout several files documenting // items.
 // 
 // How to fix this? Issue in main
-/*
-int main()
-{
-    CustomerList c();
-    UpdateDatafile(c);
-    return 0;
-}
-*/
-//*************************************************************
-// Once fixed^
-// replace clist-> to clist.
-// replace CustomerList *clist to CustomerList& clist
-// delete line 313 replace with commented code
-// remove delete clist 
-/*
+
+
 #include<istream>
 #include<ostream>
 #include<iostream>
@@ -25,11 +12,11 @@ int main()
 
 using namespace std;
 
-void UpdateDatafile(CustomerList *clist);
-void PrintOrders(CustomerList *clist);
+void UpdateDatafile(CustomerList& clist);
+void PrintOrders(CustomerList& clist);
 
 // Load customers and orders into CustomerList
-void LoadCustomers(ifstream& bookorderfile, CustomerList *clist) {
+void LoadCustomers(ifstream& bookorderfile, CustomerList& clist) {
     string line;
     string name;
     string address;
@@ -56,7 +43,7 @@ void LoadCustomers(ifstream& bookorderfile, CustomerList *clist) {
                 getline(bookorderfile, line);
                 // If starting customer record or eof
                 if (line[0] == '%' || bookorderfile.eof()) {
-                    clist->AddCustomer(newcust);
+                    clist.AddCustomer(newcust);
                     break;
                 }
                 else {
@@ -89,7 +76,7 @@ int selectMenu() {
 }
 
 // Place an order for new/existing customer 
-void PlaceOrder(CustomerList *clist) {
+void PlaceOrder(CustomerList& clist) {
     // Create book orders
     // Repeat steps from CancelOrder
     // getline, cin >> ws
@@ -100,13 +87,13 @@ void PlaceOrder(CustomerList *clist) {
         cin >> name;
 
         // Get an existing customer
-        if (clist->SearchCustomerByName(name)) {
+        if (clist.SearchCustomerByName(name)) {
             //*******************************************
             // Logic is incomplete for clist->getCustomerByName(name)
             //
             // Need to adjust following code after.
             //*******************************************
-            c = clist->getCustomerByName(name);
+            c = clist.getCustomerByName(name);
             cout << "Existing customer." << endl;
         }
         else {
@@ -120,7 +107,7 @@ void PlaceOrder(CustomerList *clist) {
             cin >> email;
             c = Customer(name, address, email, OrderList());
             //*
-            clist->AddCustomer(c);
+            clist.AddCustomer(c);
         }
 
         // Now add book orders to customer
@@ -155,20 +142,20 @@ void PlaceOrder(CustomerList *clist) {
 }
 
 // Adjust order quantity
-void UpdateOrder(CustomerList *clist) {
+void UpdateOrder(CustomerList& clist) {
     //**************(((((((((((*************
     // Repeat steps in CancelOrder
     string name;
     cout << "Enter Customer Name:";
     cin >> name;
 
-    if (clist->SearchCustomerByName(name)) {
+    if (clist.SearchCustomerByName(name)) {
         //*******************************************
         // Logic is incomplete for clist->getCustomerByName(name)
         //
         // Need to adjust following code after.
         //*******************************************
-        Customer c = clist->getCustomerByName(name);
+        Customer c = clist.getCustomerByName(name);
         string title;
         cout << "Enter the book title to be updated:";
         cin >> title;
@@ -195,7 +182,7 @@ void UpdateOrder(CustomerList *clist) {
 }
 
 // Cancel existing order
-void CancelOrder(CustomerList *clist) {
+void CancelOrder(CustomerList& clist) {
     //Broken until fixed
     string name;
     cout << "Enter Customer Name:";
@@ -203,13 +190,13 @@ void CancelOrder(CustomerList *clist) {
     getline(cin, name);
 
 
-    if (clist->SearchCustomerByName(name)) {
+    if (clist.SearchCustomerByName(name)) {
         //*******************************************
         // Logic is incomplete for clist->getCustomerByName(name)
         //
         // Need to adjust following code after.
         //*******************************************
-        Customer c = clist->getCustomerByName(name);
+        Customer c = clist.getCustomerByName(name);
         string title;
         cout << "Enter the book title to be canceled:";
         cin >> ws;
@@ -235,7 +222,7 @@ void CancelOrder(CustomerList *clist) {
 }
 
 // Print orders
-void PrintOrders(CustomerList *clist) {
+void PrintOrders(CustomerList& clist) {
     //************************************************* 
     // Customerlist and OrderList derive from linkedlistType
     // and have the print() function. Have to verify 
@@ -245,23 +232,23 @@ void PrintOrders(CustomerList *clist) {
     // Example comments added to 
     //    operator<<(ostream&, const Customer&)
     //************************************************* 
-    clist->print();
+    clist.print();
     
 }
 
 // Checkout customer order
-void CheckoutOrders(CustomerList *clist) {
+void CheckoutOrders(CustomerList& clist) {
     string name;
     cout << "Enter Customer Name:";
     cin >> name;
 
-    if (clist->SearchCustomerByName(name)) {
+    if (clist.SearchCustomerByName(name)) {
         //*******************************************
         // Logic is incomplete for clist->getCustomerByName(name)
         //
         // Need to adjust following code after.
         //*******************************************
-        Customer c = clist->getCustomerByName(name);
+        Customer c = clist.getCustomerByName(name);
 
         //*******************************************
         // Logic is incomplete for c.checkoutOrders()
@@ -287,7 +274,7 @@ void CheckoutOrders(CustomerList *clist) {
 }
 
 // Update the customers and orders data file
-void UpdateDatafile(CustomerList *clist) {
+void UpdateDatafile(CustomerList& clist) {
     //************************************************* 
     // Customerlist and OrderList have UpdateDataFile() 
     // functions. Have to verify Customerlist.UpdateDataFile()  
@@ -303,15 +290,14 @@ void UpdateDatafile(CustomerList *clist) {
     //    CustomerList.UpdateDataFile()
     //************************************************* 
     ofstream bookdatastream("BookOrders.txt");
-    clist->UpdateDataFile(bookdatastream);
+    clist.UpdateDataFile(bookdatastream);
     bookdatastream.close();
 }
 
 // We have to do this
 int main() {
     // Create CustomerList
-    //CustomerList clist = CustomerList();
-    CustomerList *clist = new CustomerList();
+    CustomerList clist = CustomerList();
 
     // Load Customer and Orders
     ifstream bookdatastream("BookOrders.txt");
@@ -354,7 +340,6 @@ int main() {
             break;
         }
     }
-    delete clist;
+
     return 0;
 }
-*/

@@ -77,7 +77,7 @@ double OrderList::CalculateSubtotal()
 		current = current->link;
 	}
 		
-	
+	return subtotal;
 }
 
 void OrderList::UpdateDataFile(ofstream& outFile)
