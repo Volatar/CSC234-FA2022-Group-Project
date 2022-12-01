@@ -115,7 +115,7 @@ void PlaceOrder(CustomerList& clist) {
         double price;
         int quanity;
         cout << "Enter the book title:";
-        cin >> title;
+        getline(cin, title);
         cout << "Enter the price:";
         cin >> price;
         cout << "Enter the number of books:";
@@ -132,7 +132,7 @@ void PlaceOrder(CustomerList& clist) {
         string choice;
         cout << "Place another order? (Y/N)";
         cin >> choice;
-        if (choice == "Y") {
+        if (choice == "Y" || choice == "y") {
             continue;
         }
         else {
