@@ -99,9 +99,10 @@ void CustomerList::UpdateDataFile(ofstream& outFile)
 
 	while (current != nullptr)
 	{
-		outFile << current->info.getCustomerName() << endl;
+		outFile << "%" << current->info.getCustomerName() << endl;
 		outFile << current->info.getAddress() << endl;
 		outFile << current->info.getEmail() << endl;
+		current->info.getOrders().UpdateDataFile(outFile);
 		current = current->link;
 	}
 
