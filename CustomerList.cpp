@@ -9,9 +9,13 @@ ostream& operator<<(ostream& osObject, const CustomerList& customerList)
 
 	while (current != nullptr)
 	{
+		osObject << "**********************************************" << endl;
 		osObject << current->info;
 		current = current->link;
+		osObject << "**********************************************" << endl;
 	}
+
+	
 
 	return osObject;
 }

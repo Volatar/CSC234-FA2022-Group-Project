@@ -11,7 +11,9 @@ ostream& operator<<(ostream& osObject, const Customer& customer)
     osObject << setw(10) << left << "Address:";
     osObject << setw(50) << left << customer.address << endl;
     osObject << setw(10) << left << "Email:";
-    osObject << setw(50) << left << customer.email << endl;
+    osObject << setw(50) << left << customer.email << endl << endl;
+    osObject << "---------- Book Orders ---------- :" << endl;
+    osObject << customer.orders;
     return osObject;
 }
 

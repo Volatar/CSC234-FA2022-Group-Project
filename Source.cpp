@@ -235,8 +235,8 @@ void PrintOrders(CustomerList& clist) {
     // Example comments added to 
     //    operator<<(ostream&, const Customer&)
     //************************************************* 
-    clist.print();
-    
+    cout << clist;
+
 }
 
 // Checkout customer order
