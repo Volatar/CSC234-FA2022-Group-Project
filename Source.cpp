@@ -8,6 +8,7 @@
 #include <ostream>
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 #include "CustomerList.h"
 #include "Customer.h"
 #include "OrderList.h"
@@ -145,9 +146,10 @@ void PlaceOrder(CustomerList& clist) {
 void UpdateOrder(CustomerList& clist) {
     //**************(((((((((((*************
     // Repeat steps in CancelOrder
-    string name;
+    string name, dummy;
     cout << "Enter Customer Name:";
-    cin >> name;
+    getline(cin, dummy);
+    getline(cin, name);
 
     if (clist.SearchCustomerByName(name)) {
         //*******************************************
@@ -157,7 +159,7 @@ void UpdateOrder(CustomerList& clist) {
         //*******************************************
         string title;
         cout << "Enter the book title to be updated:";
-        cin >> title;
+        getline(cin, title);
         int quanity;
         cout << "Enter the number of book to be updated:";
         cin >> quanity;
@@ -183,9 +185,9 @@ void UpdateOrder(CustomerList& clist) {
 // Cancel existing order
 void CancelOrder(CustomerList& clist) {
     //Broken until fixed
-    string name;
+    string name, dummy;
     cout << "Enter Customer Name:";
-    cin >> ws;
+    getline(cin, dummy);
     getline(cin, name);
 
 
@@ -197,7 +199,6 @@ void CancelOrder(CustomerList& clist) {
         //*******************************************
         string title;
         cout << "Enter the book title to be canceled:";
-        cin >> ws;
         getline(cin, title);
         //********************************************
         // Calling c.CancelOrder(title)
@@ -222,14 +223,14 @@ void CancelOrder(CustomerList& clist) {
 // Print orders
 void PrintOrders(CustomerList& clist) {
     cout << clist;
-
 }
 
 // Checkout customer order
 void CheckoutOrders(CustomerList& clist) {
-    string name;
+    string name, dummy;
     cout << "Enter Customer Name:";
-    cin >> name;
+    getline(cin, dummy);
+    getline(cin, name);
 
     if (clist.SearchCustomerByName(name)) {
         //*******************************************
@@ -252,9 +253,9 @@ void CheckoutOrders(CustomerList& clist) {
 
         // print the checkout calculations
         // Requires Formating
-        cout << "subtotal: $" << subtotal << endl;
-        cout << "tax: $" << tax << endl;
-        cout << "total payment: $" << total << endl;
+        cout << "subtotal: $" << fixed << setprecision(2) << subtotal << endl;
+        cout << "tax: $" << fixed << setprecision(2) << tax << endl;
+        cout << "total payment: $" << fixed << setprecision(2) << total << endl;
     }
     else {
         cout << "Customer does not exist." << endl;
