@@ -1,8 +1,18 @@
 #include <iostream>
 #include "Customer.h"
 #include "linkedList.h"
-ostream& operator<<(ostream&, const Customer&) {}
-Customer::Customer() {
+ostream& operator<<(ostream& osObject, const Customer& customer)
+{
+    osObject << setw(10) << left << "Name:";
+    osObject << setw(50) << left << customer.getCustomerName() << endl;
+    osObject << setw(10) << left << "Address:";
+    osObject << setw(50) << left << customer.getAddress() << endl;
+    osObject << setw(10) << left << "Email:";
+    osObject << setw(50) << left << customer.getEmail() << endl;
+    return osObject;
+}
+Customer::Customer() 
+{
     name = "";
     address = "";
     email = "";

@@ -2,8 +2,8 @@
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 #include "linkedList.h"
-#include "order.h"
-#include "orderList.h"
+#include "Order.h"
+#include "OrderList.h"
 #include <iomanip>
 #include <iostream>
 #include <string>

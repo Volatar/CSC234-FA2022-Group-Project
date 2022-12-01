@@ -1,4 +1,4 @@
-#include "customerList.h"
+#include "CustomerList.h"
 #include "linkedList.h"
 
 using namespace std;
