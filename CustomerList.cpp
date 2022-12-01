@@ -51,7 +51,7 @@ bool CustomerList::SearchCustomerByName(string customerName) const
 	return found;
 }
 
-Customer CustomerList::getCustomerByName(string customerName) const
+Customer& CustomerList::getCustomerByName(string customerName) const
 {   
 	nodeType<Customer>* current;
 	bool found = false;

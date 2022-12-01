@@ -92,8 +92,8 @@ void PlaceOrder(CustomerList& clist) {
         getline(cin, name);
 
         // Get an existing customer
-        if (clist.SearchCustomerByName(name)) {
-            c = clist.getCustomerByName(name);
+        if (clist.SearchCustomerByName(name)) 
+        {
             cout << "Existing customer." << endl;
         }
         else {
@@ -121,7 +121,7 @@ void PlaceOrder(CustomerList& clist) {
         cout << "Enter the number of books:";
         cin >> quanity;
 
-        c.AddOrder(Order(title, price, quanity));
+        clist.getCustomerByName(name).AddOrder(Order(title, price, quanity));
         cout << "New Order added for " << name << endl;
 
         // Save changes
@@ -155,7 +155,6 @@ void UpdateOrder(CustomerList& clist) {
         //
         // Need to adjust following code after.
         //*******************************************
-        Customer c = clist.getCustomerByName(name);
         string title;
         cout << "Enter the book title to be updated:";
         cin >> title;
@@ -172,7 +171,7 @@ void UpdateOrder(CustomerList& clist) {
         //
         // What to do with a 0 quantity?
         //********************************************
-        c.updateOrders(title, quanity);
+        clist.getCustomerByName(name).updateOrders(title, quanity);
 
         UpdateDatafile(clist);
     }
@@ -196,7 +195,6 @@ void CancelOrder(CustomerList& clist) {
         //
         // Need to adjust following code after.
         //*******************************************
-        Customer c = clist.getCustomerByName(name);
         string title;
         cout << "Enter the book title to be canceled:";
         cin >> ws;
@@ -211,7 +209,7 @@ void CancelOrder(CustomerList& clist) {
         //
         //********************************************
         //Doesn't work
-        c.cancelOrder(title);
+        clist.getCustomerByName(name).cancelOrder(title);
         //********************************************
         //Doesn't work
         UpdateDatafile(clist);
@@ -239,19 +237,18 @@ void CheckoutOrders(CustomerList& clist) {
         //
         // Need to adjust following code after.
         //*******************************************
-        Customer c = clist.getCustomerByName(name);
 
         //*******************************************
         // Logic is incomplete for c.checkoutOrders()
         //
         // Need to adjust following code after.
         //*******************************************
-        double subtotal = c.checkoutOrders();
+        double subtotal = clist.getCustomerByName(name).checkoutOrders();
         double tax = subtotal * 0.07;
         double total = subtotal + tax;
 
         // print the normal Customer and Order
-        cout << c << endl;
+        cout << clist.getCustomerByName(name) << endl;
 
         // print the checkout calculations
         // Requires Formating

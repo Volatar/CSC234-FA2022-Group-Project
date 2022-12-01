@@ -15,7 +15,7 @@ class CustomerList :public linkedListType<Customer>
 public:
 	void AddCustomer(Customer&);
 	bool SearchCustomerByName(string) const;
-	Customer getCustomerByName(string) const;
+	Customer& getCustomerByName(string) const;
 	void UpdateCustomer(Customer&);
 	void UpdateDataFile(ofstream&);
 };

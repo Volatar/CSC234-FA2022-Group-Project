@@ -31,7 +31,7 @@ void OrderList::AddOrder(Order& order)
 		cout << "Book already in order." << endl;
 	else
 	{
-		this->insertLast(order);
+		insertLast(order);
 	}
 }
 
