@@ -15,7 +15,7 @@ private:
 	string address;
 	string email;
 	OrderList orders;
-	void SearchOrderList(string title, bool& found, nodeType<Order>*& current) const;
+	//void SearchOrderList(string title, bool& found, nodeType<Order>*& current) const;
 
 public:
 	Customer();
