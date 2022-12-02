@@ -1,8 +1,4 @@
 //*************************************************************
-// Comments are scattered throughout several files documenting // items.
-// 
-// How to fix this? Issue in main
-
 
 #include <istream>
 #include <ostream>
@@ -152,11 +148,6 @@ void UpdateOrder(CustomerList& clist) {
     getline(cin, name);
 
     if (clist.SearchCustomerByName(name)) {
-        //*******************************************
-        // Logic is incomplete for clist->getCustomerByName(name)
-        //
-        // Need to adjust following code after.
-        //*******************************************
         string title;
         cout << "Enter the book title to be updated:";
         getline(cin, title);
@@ -184,7 +175,6 @@ void UpdateOrder(CustomerList& clist) {
 
 // Cancel existing order
 void CancelOrder(CustomerList& clist) {
-    //Broken until fixed
     string name, dummy;
     cout << "Enter Customer Name:";
     getline(cin, dummy);
@@ -192,11 +182,6 @@ void CancelOrder(CustomerList& clist) {
 
 
     if (clist.SearchCustomerByName(name)) {
-        //*******************************************
-        // Logic is incomplete for clist->getCustomerByName(name)
-        //
-        // Need to adjust following code after.
-        //*******************************************
         string title;
         cout << "Enter the book title to be canceled:";
         getline(cin, title);
@@ -207,12 +192,7 @@ void CancelOrder(CustomerList& clist) {
         // Should c.CancelOrder(title)
         // with valid title display a message?
         //********************************************
-        //
-        //********************************************
-        //Doesn't work
         clist.getCustomerByName(name).cancelOrder(title);
-        //********************************************
-        //Doesn't work
         UpdateDatafile(clist);
     }
     else {
@@ -233,17 +213,6 @@ void CheckoutOrders(CustomerList& clist) {
     getline(cin, name);
 
     if (clist.SearchCustomerByName(name)) {
-        //*******************************************
-        // Logic is incomplete for clist->getCustomerByName(name)
-        //
-        // Need to adjust following code after.
-        //*******************************************
-
-        //*******************************************
-        // Logic is incomplete for c.checkoutOrders()
-        //
-        // Need to adjust following code after.
-        //*******************************************
         double subtotal = clist.getCustomerByName(name).checkoutOrders();
         double tax = subtotal * 0.07;
         double total = subtotal + tax;
