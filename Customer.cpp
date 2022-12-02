@@ -82,7 +82,7 @@ bool Customer::operator!=(const Customer& otherCustomer) const {
         email != otherCustomer.email);
 }
 
-void Customer::SearchOrderList(string title, bool& found, nodeType<Order>*& current) const
+/*void Customer::SearchOrderList(string title, bool& found, nodeType<Order>*& current) const
 {
     found = false;
     while (current != nullptr && !found)
@@ -92,4 +92,4 @@ void Customer::SearchOrderList(string title, bool& found, nodeType<Order>*& curr
         else
             current = current->link;
     }
-}
+}*/
