@@ -3,6 +3,17 @@
 #include "linkedList.h"
 
 using namespace std;
+/*void Customer::SearchOrderList(string title, bool& found, nodeType<Order>*& current) const
+{
+    found = false;
+    while (current != nullptr && !found)
+    {
+        if (current->info.getTitle() == title)
+            found = true;
+        else
+            current = current->link;
+    }
+}*/
 
 ostream& operator<<(ostream& osObject, const Customer& customer)
 {
@@ -82,14 +93,4 @@ bool Customer::operator!=(const Customer& otherCustomer) const {
         email != otherCustomer.email);
 }
 
-/*void Customer::SearchOrderList(string title, bool& found, nodeType<Order>*& current) const
-{
-    found = false;
-    while (current != nullptr && !found)
-    {
-        if (current->info.getTitle() == title)
-            found = true;
-        else
-            current = current->link;
-    }
-}*/
+
